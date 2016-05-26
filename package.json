@@ -39,7 +39,7 @@
     "url": "https://github.com/davesnx/scrollto-with-animation/issues"
   },
   "dependencies": {
-    "animation-frame": "^0.2.5"
+    "animation-frame": "^0.3.0"
   },
   "devDependencies": {
     "babel": "^6.3.26",
