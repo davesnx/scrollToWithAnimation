@@ -38,7 +38,7 @@ import scrollToWithAnimation from 'scrollto-with-animation'
 ```javascript
 scrollToWithAnimation(
     document.body, // element to scroll
-    'scrollTop' // direction to scroll
+    'scrollTop', // direction to scroll
     0, // target scrollY (0 means top of the page)
     10000, // duration in ms
     'easeInOutCirc', /*
