@@ -59,7 +59,7 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sourcemap-loader": "^0.3.6",
-    "karma-spec-reporter": "0.0.22",
+    "karma-spec-reporter": "0.0.32",
     "karma-story-reporter": "^0.3.1",
     "karma-webpack": "^2.0.13",
     "phantomjs": "^2.1.7",
