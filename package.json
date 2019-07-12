@@ -64,7 +64,7 @@
     "karma-webpack": "^2.0.13",
     "phantomjs": "^2.1.7",
     "pre-push": "^0.1.1",
-    "webpack": "^1.12.13"
+    "webpack": "^2.7.0"
   },
   "standard": {
     "parser": "babel-eslint",
