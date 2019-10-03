@@ -10,6 +10,7 @@ const LIB_NAME = `${name}@${version}`
 const TRANSITION_NOT_FOUND = `${LIB_NAME}: Transition not found - ${repository.url}`
 const ANIMATION_NOT_VALID = `${LIB_NAME}: callback transition don't look like a valid equation - ${repository.url}`
 const TRANSITION_NOT_VALID = `${LIB_NAME}: Transition isn't string or Function - ${repository.url}`
+const SCROLLING_WITHOUT_DOCUMENT = `${LIB_NAME}: Trying to scroll without a valid document. Maybe running this in the server? - ${repository.url}`
 
 const ANIMATION_CANCEL = 'animation-cancel'
 const ANIMATION_END = 'animation-end'
@@ -33,7 +34,7 @@ const defineAnimation = (transition) => {
 }
 
 const scrollToWithAnimation = (
-  element = _document,
+  element,
   direction = 'scrollTop',
   to = 0,
   duration = 100,
@@ -47,6 +48,12 @@ const scrollToWithAnimation = (
   let isAnimating = true
   let lastScrolledPosition
   let transitionFunction
+
+  if (!element && _document) {
+    element = _document.documentElement
+  } else {
+    throw new Error(SCROLLING_WITHOUT_DOCUMENT)
+  }
 
   if (typeof transition === 'string' || transition === null) {
     transitionFunction = findAnimation(transition)
@@ -63,8 +70,8 @@ const scrollToWithAnimation = (
     )
 
     if (!lastScrolledPosition || to !== element[direction]) {
-      element[direction] = newScrollPosition
       lastScrolledPosition = newScrollPosition
+      element[direction] = newScrollPosition
     } else {
       isAnimating = false
       if (callback) {
@@ -90,7 +97,7 @@ const scrollToWithAnimation = (
   id = rAF.request(animateScroll)
 }
 
-// Publish public method in window
+// Publish fn in window
 if (_window !== {}) {
   _window.scrollToWithAnimation = scrollToWithAnimation
 }
