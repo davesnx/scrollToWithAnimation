@@ -68,3 +68,21 @@ a.header-link:hover {
 .fpsMeter > div {
   border-radius: 3px;
 }
+
+#trigger-scroll-btn {
+  color: white;
+  background: #27292F;
+  font-size: 20px;
+  border: none;
+  border: 2px solid white;
+  padding: 7px 20px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  margin-bottom: 20px;
+}
+
+#trigger-scroll-btn:hover {
+  background: #65666B;
+}

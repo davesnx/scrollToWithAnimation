@@ -1,17 +1,11 @@
-window.onload = function () {
-  'use strict'
+'use strict'
 
+window.onload = function () {
   var elemHighlighted = document.getElementById('highlight')
   var header = document.getElementById('header')
   var counterFPS = document.getElementById('fpsMeter')
   var counterButton = document.getElementById('fps-button')
-
-  function enableFPS (event) {
-    event.preventDefault()
-    counterFPS.style.opacity = (counterFPS.style.opacity === '0') ? '1' : '0'
-  }
-
-  counterButton.addEventListener('click', enableFPS)
+  var triggerButton = document.getElementById('trigger-scroll-btn')
 
   var meter = new window.FPSMeter(counterFPS, {
     interval: 10,
@@ -36,36 +30,29 @@ window.onload = function () {
     return c / 2 * (Math.sqrt(1 - t * t) + 1) + b
   }
 
-  function doneCallback () {
-    console.log('Done!')
+  function enableFPS (event) {
+    event.preventDefault()
+    counterFPS.style.opacity = (counterFPS.style.opacity === '0') ? '1' : '0'
   }
 
-  var position = elemHighlighted.getBoundingClientRect().top - header.getBoundingClientRect().height
-  var newpos = position
-  var direction = 'scrollTop'
+  function scroll (event) {
+    event.preventDefault()
+    var direction = 'scrollTop'
 
-  window.scrollToWithAnimation(
-    document.body,
-    direction,
-    position,
-    3000,
-    easeInOutCircWithFPS,
-    doneCallback
-  )
+    var position = elemHighlighted.getBoundingClientRect().top - header.getBoundingClientRect().height
 
-  setInterval(function () {
-    if (newpos !== 0) {
-      newpos = 0
-    } else {
-      newpos = position
-    }
     window.scrollToWithAnimation(
-      document.body,
+      document.documentElement,
       direction,
-      newpos,
-      3000,
+      position,
+      2000,
       easeInOutCircWithFPS,
-      doneCallback
+      function () {
+        console.log('Done!')
+      }
     )
-  }, 4500)
+  }
+
+  counterButton.addEventListener('click', enableFPS)
+  triggerButton.addEventListener('click', scroll)
 }
