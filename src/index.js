@@ -10,7 +10,6 @@ const LIB_NAME = `${name}@${version}`
 const TRANSITION_NOT_FOUND = `${LIB_NAME}: Transition not found - ${repository.url}`
 const ANIMATION_NOT_VALID = `${LIB_NAME}: callback transition don't look like a valid equation - ${repository.url}`
 const TRANSITION_NOT_VALID = `${LIB_NAME}: Transition isn't string or Function - ${repository.url}`
-const SCROLLING_WITHOUT_DOCUMENT = `${LIB_NAME}: Trying to scroll without a valid document. Maybe running this in the server? - ${repository.url}`
 
 const ANIMATION_CANCEL = 'animation-cancel'
 const ANIMATION_END = 'animation-end'
@@ -49,10 +48,8 @@ const scrollToWithAnimation = (
   let lastScrolledPosition
   let transitionFunction
 
-  if (!element && _document) {
+  if (!element) {
     element = _document.documentElement
-  } else {
-    throw new Error(SCROLLING_WITHOUT_DOCUMENT)
   }
 
   if (typeof transition === 'string' || transition === null) {
