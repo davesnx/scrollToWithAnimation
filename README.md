@@ -1,5 +1,7 @@
 ![](docs/Logo.png)
 
+### [Live demo](http://scrollto-with-animation.surge.sh/)
+
 [![Build Status](https://travis-ci.org/davesnx/scrollto-with-animation.svg?branch=master)](https://travis-ci.org/davesnx/scrollto-with-animation) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/scrollto-with-animation)
 
 - Using [**requestAnimationFrame**](https://dev.opera.com/articles/better-performance-with-requestanimationframe/)
@@ -8,8 +10,6 @@
 - Available as a **script or UMD**
 - Only **one dependency** to have **requestAnimationFrame cross-browser**
 - If user scrolls while animation is running, scroll animation would be immediately canceled
-
-#### [Live demo](http://scrollto-with-animation.surge.sh/)
 
 ## Install
 
