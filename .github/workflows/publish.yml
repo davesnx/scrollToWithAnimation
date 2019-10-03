@@ -20,6 +20,8 @@ jobs:
           yarn install
           yarn build
           yarn test
+      - uses: actions/upload-artifact@master
+
 
   publish-npm:
     needs: install
@@ -30,6 +32,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+      - uses: actions/download-artifact@master
       - run: npx semantic-release
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -42,6 +45,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
+      - uses: actions/download-artifact@master
       - uses: dswistowski/surge-sh-action@v1
         with:
           domain: 'scrollto-with-animation.surge.sh'
