@@ -33,7 +33,7 @@ const defineAnimation = (transition) => {
 }
 
 const scrollToWithAnimation = (
-  element = _document,
+  element,
   direction = 'scrollTop',
   to = 0,
   duration = 100,
@@ -47,6 +47,10 @@ const scrollToWithAnimation = (
   let isAnimating = true
   let lastScrolledPosition
   let transitionFunction
+
+  if (!element) {
+    element = _document.documentElement
+  }
 
   if (typeof transition === 'string' || transition === null) {
     transitionFunction = findAnimation(transition)
@@ -63,8 +67,8 @@ const scrollToWithAnimation = (
     )
 
     if (!lastScrolledPosition || to !== element[direction]) {
-      element[direction] = newScrollPosition
       lastScrolledPosition = newScrollPosition
+      element[direction] = newScrollPosition
     } else {
       isAnimating = false
       if (callback) {
@@ -90,7 +94,7 @@ const scrollToWithAnimation = (
   id = rAF.request(animateScroll)
 }
 
-// Publish public method in window
+// Publish fn in window
 if (_window !== {}) {
   _window.scrollToWithAnimation = scrollToWithAnimation
 }

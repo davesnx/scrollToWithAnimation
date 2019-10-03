@@ -1,6 +1,6 @@
 import scrollto, { rAF } from './../src/index'
 
-const D = document
+const D = document.documentElement
 const TO = 0
 const DURATION = 100
 const DIRECTION = 'scrollTop'
@@ -36,7 +36,7 @@ describe(`#defineAnimation when you pass an easing function`, () => {
 describe(`#do the scrollto with animation`, () => {
   it(`should call animationFrame.request`, () => {
     rAF.request = jasmine.createSpy('animationFrameSpy')
-    scrollto()
+    scrollto(D, DIRECTION, TO, DURATION, TRANSITION_EQ_OK)
     expect(rAF.request).toHaveBeenCalled()
   })
 })
