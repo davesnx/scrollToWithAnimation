@@ -28,12 +28,13 @@
     "clean": "rm -rf dist/* && rm -rf lib/ && rm -rf src/package-info.json",
     "minify:dev": "NODE_ENV=dev webpack --watch",
     "minify:prod": "NODE_ENV=prod webpack -p",
-    "compile:dev": "NODE_ENV=dev babel src --watch --out-dir lib",
-    "compile:prod": "NODE_ENV=prod babel src --out-dir lib",
+    "compile:dev": "NODE_ENV=dev npm run postversion && babel src --watch --out-dir lib",
+    "compile:prod": "NODE_ENV=prod npm run postversion && babel src --out-dir lib",
     "test:dev": "NODE_ENV=prod karma start test/karma.config.js --auto-watch",
     "test": "NODE_ENV=prod karma start test/karma.config.js --single-run",
     "build": "npm run clean && npm run compile:prod && npm run minify:prod",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "postversion": "node postversion.js"
   },
   "pre-commit": [
     "test"
