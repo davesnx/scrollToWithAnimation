@@ -1,15 +1,19 @@
-import easings from './easings'
 import RAF from 'animation-frame'
-import { name, version, repository } from './package-info.json'
+import easings from './easings'
+
+const packageInfo = {
+  name: 'scrollto-with-animation',
+  url: 'https://github.com/davesnx/scrollto-with-animation'
+}
 
 const rAF = new RAF()
 
 const DEBUG = process.env.NODE_ENV || true
 const DEFAULT_ANIMATION = 'easeInQuad'
-const LIB_NAME = `${name}@${version}`
-const TRANSITION_NOT_FOUND = `${LIB_NAME}: Transition not found - ${repository.url}`
-const ANIMATION_NOT_VALID = `${LIB_NAME}: callback transition don't look like a valid equation - ${repository.url}`
-const TRANSITION_NOT_VALID = `${LIB_NAME}: Transition isn't string or Function - ${repository.url}`
+const LIB_NAME = `${packageInfo.name}`
+const TRANSITION_NOT_FOUND = `${LIB_NAME}: Transition not found - ${packageInfo.url}`
+const ANIMATION_NOT_VALID = `${LIB_NAME}: callback transition don't look like a valid equation - ${packageInfo.url}`
+const TRANSITION_NOT_VALID = `${LIB_NAME}: Transition isn't string or Function - ${packageInfo.url}`
 
 const ANIMATION_CANCEL = 'animation-cancel'
 const ANIMATION_END = 'animation-end'
