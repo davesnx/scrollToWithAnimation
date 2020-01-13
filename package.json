@@ -45,7 +45,7 @@
     "animation-frame": "^0.3.0"
   },
   "devDependencies": {
-    "@semantic-release/commit-analyzer": "^6.3.0",
+    "@semantic-release/commit-analyzer": "^6.3.3",
     "@semantic-release/npm": "^5.2.0",
     "@semantic-release/release-notes-generator": "^7.3.0",
     "babel-cli": "^6.9.0",
